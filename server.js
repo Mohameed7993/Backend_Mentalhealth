@@ -2,12 +2,14 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan')
+require('dotenv').config();
 var mongoose=require('mongoose');
 
+console.log(process.env.MONGODB_URI)
 //connect to the DB
 const connectToDatabase = async () => {
     try {
-      const connection = await mongoose.connect('mongodb+srv://mohameedEgbaria:webfinal14@cluster0.rcjkzhe.mongodb.net/Mental_HelthProject?retryWrites=true&w=majority&appName=Cluster0');
+      const connection = await mongoose.connect(process.env.MONGODB_URI);
       console.log('Connected successfully');
       console.log('Database Name:', connection.connections[0].name);
     } catch (error) {
@@ -58,4 +60,4 @@ app.get('*', function (req, res) {
     res.send('404 not found');
 });
 
-app.listen(5000);
+app.listen(process.env.PORT, () => console.log(`Server started on port ${process.env.PORT }`));

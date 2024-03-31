@@ -1,7 +1,10 @@
 var express = require('express');
 var router = express.Router(); // הוא מקבל את הבורט מהפייל שקרא לו  ומנתב אותה 
+
+
 const upload =require('../middleware/upload');
 const upload1=require ('../middleware/upload1')
+
 
 var Customer = require("../models/userdetails");
 var Cus_MentalHealth=require("../models/userInform");
